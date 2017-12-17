@@ -9,6 +9,22 @@
 class FrontendController extends CController
 {
     /**
+     * @var string the default layout for the controller view. Defaults to '//layouts/column1',
+     * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
+     */
+    public $layout='//layouts/main';
+    /**
+     * @var array context menu items. This property will be assigned to {@link CMenu::items}.
+     */
+    public $menu=array();
+    /**
+     * @var array the breadcrumbs of the current page. The value of this property will
+     * be assigned to {@link CBreadcrumbs::links}. Please refer to {@link CBreadcrumbs::links}
+     * for more details on how to specify this property.
+     */
+    public $breadcrumbs=array();
+
+    /**
      * What to do before rendering the view file.
      *
      * We include Google Analytics code if ID was specified and register the frontend assets.
@@ -50,4 +66,42 @@ class FrontendController extends CController
             ->registerCssFile("{$frontend}/main-ui/main.css")
             ->registerScriptFile("{$frontend}/main-ui/main.js", CClientScript::POS_END);
     }
+
+    /**
+     * Additional behavior associated with different routes in the controller.
+     *
+     * This is base class for all backend controllers, so we apply CAccessControlFilter
+     * and on all actions except `actionDelete` we make the YiiBooster library to be available.
+     *
+     * @see http://www.yiiframework.com/doc/api/1.1/CController#filters-detail
+     * @see http://www.yiiframework.com/doc/api/1.1/CAccesControlFilter
+     * @see http://yii-booster.clevertech.biz/getting-started.html#initialization
+     *
+     * @return array
+     */
+    public function filters()
+    {
+        return array(
+            'accessControl',
+            array('bootstrap.filters.BootstrapFilter - delete'),
+        );
+    }
+
+    /**
+     * Rules for CAccessControlFilter.
+     *
+     * We allow all actions to logged in users and disable everything for others.
+     *
+     * @see http://www.yiiframework.com/doc/api/1.1/CController#accessRules-detail
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            ['allow', 'customer' => ['@'] ],
+            ['deny'],
+        ];
+    }
+
 }

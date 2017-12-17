@@ -13,6 +13,7 @@ class BackendHomePageAction extends CAction
      */
     public function run()
     {
+//        p(Yii::)
         $this->controller->render('index');
     }
 } 

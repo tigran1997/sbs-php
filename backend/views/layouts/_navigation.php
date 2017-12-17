@@ -9,7 +9,7 @@ $this->widget(
     'bootstrap.widgets.TbNavbar',
     array(
         'type' => 'inverse',
-        'brand' => 'Project name',
+        'brand' => 'sbs',
         'brandUrl' => '/',
         'collapse' => true,
         'items' => array(
@@ -31,7 +31,13 @@ $this->widget(
                         'label' => 'Users list',
                         'url' => array('/user'),
                         'visible' => !Yii::app()->user->isGuest
+                    ),
+                    array(
+                        'label' => 'Customer List',
+                        'url' => array('/Customer'),
+                        'visible' => !Yii::app()->user->isGuest
                     )
+
                 ),
             ),
         ),

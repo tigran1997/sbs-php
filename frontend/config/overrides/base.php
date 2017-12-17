@@ -6,6 +6,7 @@ return [
     // So our relative path aliases will resolve against the `/frontend` subdirectory and not nonexistent `/protected`
     'basePath' => 'frontend',
     'import' => [
+        'application.components.*',
         'application.controllers.*',
         'application.controllers.actions.*',
         'common.actions.*',
@@ -15,6 +16,10 @@ return [
         'site' => 'FrontendSiteController'
     ],
     'components' => [
+        'bootstrap' => [
+            // `bootstrap` path alias was defined in global init script
+            'class' => 'bootstrap.components.Bootstrap'
+        ],
         'errorHandler' => [
             // Installing our own error page.
             'errorAction' => 'site/error'
@@ -29,5 +34,8 @@ return [
                 // Your other rules here...
             ]
         ],
+        'user'=>[
+            'loginUrl' => '/'
+        ]
     ],
 ];

@@ -23,4 +23,24 @@ class FrontendSiteController extends FrontendController
             )
 		);
 	}
+
+
+    /**
+     * Rules for CAccessControlFilter.
+     *
+     * We enable the registration and other basic pages for guest users.
+     *
+     * @see http://www.yiiframework.com/doc/api/1.1/CController#accessRules-detail
+     *
+     * @return array Rules for the "accessControl" filter.
+     */
+    public function accessRules()
+    {
+        return array_merge(
+            [
+                [ 'allow', 'actions' => ['index', 'login', 'logout', 'captcha', 'error'] ]
+            ],
+            parent::accessRules()
+        );
+    }
 }

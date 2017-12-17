@@ -14,6 +14,7 @@ Yii::setPathOfAlias('frontend', ROOT_DIR .'/frontend');
 Yii::setPathOfAlias('www', ROOT_DIR . '/frontend/www');
 
 # We use our custom-made WebApplication component as base class for frontend app.
+Yii::setPathOfAlias('bootstrap', ROOT_DIR . '/vendor/clevertech/yii-booster/src');
 require_once ROOT_DIR . '/frontend/components/FrontendWebApplication.php';
 
 # For obvious reasons, backend entry point is constructed of specialised WebApplication and config
