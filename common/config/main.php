@@ -11,7 +11,7 @@
  * @see `frontend/config/main.php`
  * @see `backend/config/main.php`
  */
-define ('SENDGRID_API_KEY','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');
+
 
 
 
